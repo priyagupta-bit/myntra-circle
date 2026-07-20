@@ -1,0 +1,399 @@
+<div class="min-h-screen bg-background">
+
+    <!-- HERO -->
+
+    <section class="container mx-auto py-14">
+
+        <div
+            class="bg-white rounded-[32px] shadow-card p-10 flex flex-col lg:flex-row justify-between items-center gap-10">
+
+            <div>
+
+                <span class="px-4 py-2 rounded-full bg-softPink text-primary font-medium">
+
+                    Creator Studio ✨
+
+                </span>
+
+                <h1 class="font-heading text-5xl mt-6">
+
+                    Build fashion communities,
+                    <br>
+                    not just followers.
+
+                </h1>
+
+                <p class="mt-6 text-gray max-w-2xl leading-8">
+
+                    Create collaborative shopping rooms where your audience
+                    votes, discusses and shops together. Turn fashion
+                    inspiration into shared decisions.
+
+                </p>
+
+                <button
+                    class="primary-btn mt-8"
+                    (click)="openModal()">
+
+                    + Create New Room
+
+                </button>
+
+            </div>
+
+            <div>
+
+                <div
+                    class="w-44 h-44 rounded-full bg-softPink flex items-center justify-center text-6xl shadow-card">
+
+                    👗
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- STATS -->
+
+    <section class="container mx-auto">
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+
+            @for(stat of stats; track stat.title){
+
+            <div
+                class="bg-white rounded-[24px] shadow-card p-8 text-center hover:-translate-y-1 transition-all">
+
+                <h2 class="font-heading text-4xl">
+
+                    {{stat.value}}
+
+                </h2>
+
+                <p class="text-gray mt-2">
+
+                    {{stat.title}}
+
+                </p>
+
+            </div>
+
+            }
+
+        </div>
+
+    </section>
+
+    <!-- ACTIVE ROOMS -->
+
+    <section class="container mx-auto py-14">
+
+        <div class="flex justify-between items-center mb-8">
+
+            <h2 class="font-heading text-4xl">
+
+                Active Creator Rooms
+
+            </h2>
+
+            <button class="secondary-btn">
+
+                View All
+
+            </button>
+
+        </div>
+
+        <div class="space-y-6">
+
+            @for(room of rooms; track room.title){
+
+            <div
+                class="bg-white rounded-[28px] shadow-card p-8 hover:-translate-y-1 transition-all">
+
+                <div class="flex justify-between items-center">
+
+                    <div>
+
+                        <h3 class="font-heading text-2xl">
+
+                            {{room.title}}
+
+                        </h3>
+
+                        <p class="text-gray mt-2">
+
+                            {{room.participants}} participants · {{room.votes}} votes
+
+                        </p>
+
+                    </div>
+
+                    <div class="flex items-center gap-4">
+
+                        <span class="px-4 py-2 rounded-full bg-softPink text-primary">
+
+                            {{room.status}}
+
+                        </span>
+
+                        <button class="primary-btn">
+
+                            Open Room
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            }
+
+        </div>
+
+    </section>
+
+</div>
+@if(showModal){
+
+<div
+class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+<div
+class="bg-white rounded-[32px] w-[800px] max-w-[90vw] max-h-[90vh] overflow-y-auto p-8">
+
+<h2 class="font-heading text-4xl">
+
+Create Shopping Room
+
+</h2>
+
+<p class="text-gray mt-2">
+
+Start a collaborative shopping experience with your community.
+
+</p>
+
+
+<div class="mt-8">
+
+<label class="font-medium">
+
+Room Title
+
+</label>
+
+<input
+
+[(ngModel)]="roomTitle"
+
+class="w-full border rounded-xl p-3 mt-2"
+
+placeholder="Goa Vacation Looks">
+
+</div>
+
+<div class="mt-6">
+
+<label class="font-medium">
+
+Description
+
+</label>
+<hr class="my-8">
+
+<h3 class="font-heading text-3xl">
+
+Build Your Look
+
+</h3>
+
+<p class="text-gray mt-2">
+
+Choose products for your shopping room.
+
+</p>
+
+<div
+class="grid grid-cols-3 gap-3 mt-6">
+
+@for(item of catalog;track item.id){
+
+<div
+
+(click)="toggleProduct(item)"
+
+class="cursor-pointer rounded-2xl border overflow-hidden hover:shadow-card transition-all">
+
+<img
+
+[src]="item.image"
+
+class="h-24 w-full object-cover">
+
+<div class="p-2">
+
+<h4 class="font-semibold text-sm">
+
+{{item.name}}
+
+</h4>
+
+<p class="text-primary text-sm">
+
+{{item.price}}
+
+</p>
+
+</div>
+
+</div>
+
+}
+<div class="mt-10">
+
+<h3 class="font-heading text-3xl">
+
+Look Preview
+
+</h3>
+
+<div
+
+class="mt-6 min-h-[220px] rounded-[28px] bg-cream p-6">
+
+@if(selectedProducts.length===0){
+
+<div
+class="h-full flex items-center justify-center text-gray">
+
+Your curated look will appear here.
+
+</div>
+
+}
+
+@else{
+
+<div
+
+class="grid grid-cols-4 gap-4">
+
+@for(product of selectedProducts;track product.id){
+
+<img
+
+[src]="product.image"
+
+class="rounded-xl h-36 w-full object-cover">
+
+}
+
+</div>
+
+}
+
+</div>
+
+</div>
+
+</div>
+
+<textarea
+
+[(ngModel)]="roomDescription"
+
+rows="4"
+
+class="w-full border rounded-xl p-3 mt-2"
+
+placeholder="Vote for your favourite vacation outfit...">
+
+</textarea>
+
+</div>
+
+<div class="grid grid-cols-2 gap-6 mt-6">
+
+<div>
+
+<label class="font-medium">
+
+Audience
+
+</label>
+
+<select
+
+[(ngModel)]="audience"
+
+class="w-full border rounded-xl p-3 mt-2">
+
+<option>Public</option>
+
+<option>Followers</option>
+
+<option>Invite Only</option>
+
+</select>
+
+</div>
+
+<div>
+
+<label class="font-medium">
+
+Voting Ends
+
+</label>
+
+<select
+
+[(ngModel)]="duration"
+
+class="w-full border rounded-xl p-3 mt-2">
+
+<option>12 Hours</option>
+
+<option>24 Hours</option>
+
+<option>48 Hours</option>
+
+<option>7 Days</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="flex justify-end gap-4 mt-10">
+
+<button
+class="secondary-btn"
+(click)="closeModal()">
+
+Cancel
+
+</button>
+
+<button
+class="primary-btn"
+(click)="publishRoom()">
+
+Publish Room
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+}

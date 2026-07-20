@@ -1,0 +1,561 @@
+<div class="min-h-screen bg-background">
+
+  <!-- ========================= -->
+  <!-- HEADER -->
+  <!-- ========================= -->
+
+  <header class="border-b border-border bg-white sticky top-0 z-20">
+
+    <div class="container mx-auto flex items-center justify-between py-5">
+
+      <div>
+
+        <p class="text-sm text-gray">
+          Shared Room
+        </p>
+
+        <h1 class="font-heading text-3xl mt-1">
+          Goa Girls Trip 🌴
+        </h1>
+
+      </div>
+
+      <button
+        class="primary-btn"
+        (click)="openInviteModal()">
+
+        Invite Friends
+
+        </button>
+
+    </div>
+
+  </header>
+
+  <!-- ========================= -->
+  <!-- MEMBERS -->
+  <!-- ========================= -->
+
+  <section class="container mx-auto py-8">
+
+    <div class="flex items-center justify-between">
+
+      <div class="flex items-center gap-3">
+
+        @for(member of members; track member){
+
+          <div
+            class="w-12 h-12 rounded-full bg-softPink flex items-center justify-center font-semibold text-primary shadow-soft">
+
+            {{ member.charAt(0) }}
+
+          </div>
+
+        }
+
+      </div>
+
+      <div
+        class="flex items-center gap-2 text-primary font-medium">
+
+        <span
+          class="w-3 h-3 rounded-full bg-green-500 animate-pulse"></span>
+
+        Live
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ========================= -->
+  <!-- MOODBOARD -->
+  <!-- ========================= -->
+
+  <section class="container mx-auto pb-16">
+
+    <div class="flex items-center justify-between mb-8">
+
+      <h2 class="font-heading text-4xl">
+
+        Shared Moodboard
+
+      </h2>
+
+      <button
+        class="secondary-btn"
+        (click)="openProductModal()">
+
+        + Add Product
+
+      </button>
+
+    </div>
+
+    <!-- PRODUCT GRID -->
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+      @for(product of products; track product.id){
+
+      <div
+        class="bg-white rounded-[28px] overflow-hidden shadow-card hover:-translate-y-2 transition-all duration-300">
+
+        <img
+          [src]="product.image"
+          [alt]="product.name"
+          class="h-72 w-full object-cover">
+
+        <div class="p-6">
+
+          <h3
+            class="font-semibold text-lg">
+
+            {{ product.name }}
+
+          </h3>
+
+          <p
+            class="text-primary font-semibold mt-1">
+
+            {{ product.price }}
+
+          </p>
+
+          <div
+            class="flex items-center justify-between mt-6">
+
+            <span
+              class="px-4 py-2 rounded-full bg-softPink text-primary">
+
+              ❤️ {{ product.votes }}
+
+            </span>
+
+            <button
+            class="primary-btn text-sm px-5 py-2"
+            (click)="vote(product)">
+
+            ❤️ Vote
+
+</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      }
+
+    </div>
+
+  </section>
+      <!-- ========================= -->
+  <!-- ACTIVITY + AI -->
+  <!-- ========================= -->
+
+  <section class="container mx-auto pb-20">
+
+    <div class="grid lg:grid-cols-3 gap-8">
+
+      <!-- ================= -->
+      <!-- LIVE ACTIVITY -->
+      <!-- ================= -->
+
+      <div
+        class="lg:col-span-2 bg-white rounded-[28px] shadow-card p-8">
+
+        <div class="flex items-center justify-between mb-6">
+
+          <h2 class="font-heading text-3xl">
+
+            Live Activity
+
+          </h2>
+
+          <span
+            class="text-primary font-medium flex items-center gap-2">
+
+            <span
+              class="w-3 h-3 rounded-full bg-green-500 animate-pulse">
+
+            </span>
+
+            Live
+
+          </span>
+
+        </div>
+
+        <div class="space-y-5">
+
+          <div
+            class="flex items-start gap-4">
+
+            <div
+              class="w-11 h-11 rounded-full bg-softPink flex items-center justify-center font-semibold">
+
+              P
+
+            </div>
+
+            <div>
+
+              <p class="font-medium">
+
+                Priya voted for
+
+                <span class="text-primary">
+
+                  White Linen Dress ❤️
+
+                </span>
+
+              </p>
+
+              <p class="text-sm text-gray">
+
+                2 minutes ago
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <div
+            class="flex items-start gap-4">
+
+            <div
+              class="w-11 h-11 rounded-full bg-cream flex items-center justify-center font-semibold">
+
+              R
+
+            </div>
+
+            <div>
+
+              <p class="font-medium">
+
+                Riya added
+
+                <span class="text-primary">
+
+                  Platform Heels 👠
+
+                </span>
+
+              </p>
+
+              <p class="text-sm text-gray">
+
+                Just now
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <div
+            class="flex items-start gap-4">
+
+            <div
+              class="w-11 h-11 rounded-full bg-softPink flex items-center justify-center font-semibold">
+
+              A
+
+            </div>
+
+            <div>
+
+              <p class="font-medium">
+
+                Ananya reacted
+
+                <span class="text-primary">
+
+                  🔥 Love this!
+
+                </span>
+
+              </p>
+
+              <p class="text-sm text-gray">
+
+                A few seconds ago
+
+              </p>
+
+            </div>
+
+          </div>
+
+          <div
+            class="flex items-start gap-4">
+
+            <div
+              class="w-11 h-11 rounded-full bg-cream flex items-center justify-center font-semibold">
+
+              S
+
+            </div>
+
+            <div>
+
+              <p class="font-medium">
+
+                Sara joined the Circle 🎉
+
+              </p>
+
+              <p class="text-sm text-gray">
+
+                Just now
+
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ================= -->
+      <!-- AI PANEL -->
+      <!-- ================= -->
+
+      <div
+        class="bg-white rounded-[28px] shadow-card p-8 sticky top-28 h-fit">
+
+        <div
+          class="inline-flex items-center gap-2 rounded-full bg-softPink px-4 py-2 text-primary font-medium">
+
+          ✨ AI Fashion Assistant
+
+        </div>
+
+        <h3
+          class="font-heading text-2xl mt-6">
+
+          Group Style Summary
+
+        </h3>
+
+        <p
+          class="text-gray mt-4 leading-7">
+
+          Everyone seems to prefer a
+          <strong>coastal neutral aesthetic.</strong>
+
+          Linen fabrics, pearl accessories and
+          warm beige tones are receiving the
+          highest engagement.
+
+        </p>
+
+        <div
+          class="mt-8 rounded-2xl bg-cream p-5">
+
+          <p
+            class="text-sm text-gray">
+
+            ⭐ AI Recommendation
+
+          </p>
+
+          <p
+            class="font-semibold mt-2">
+
+            White Linen Dress
+
+          </p>
+
+          <p
+            class="text-sm text-gray mt-2">
+
+            Best matches the group's mood,
+            budget and recent votes.
+
+          </p>
+
+        </div>
+
+        <button
+          class="primary-btn w-full mt-8">
+
+          Generate New Summary
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+  
+</div>
+@if(showInviteModal){
+
+<div
+class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+<div
+class="bg-white rounded-[28px] w-[520px] p-8">
+
+<h2 class="font-heading text-3xl">
+
+Invite Friends
+
+</h2>
+
+<p class="text-gray mt-2">
+
+Share your shopping room.
+
+</p>
+
+<div class="mt-8">
+
+<label class="text-sm font-medium">
+
+Invite Link
+
+</label>
+
+<div class="flex mt-2">
+
+<input
+class="flex-1 border rounded-l-xl p-3"
+readonly
+[value]="inviteLink">
+
+<button
+class="primary-btn rounded-l-none"
+(click)="copyInviteLink()">
+
+Copy
+
+</button>
+
+</div>
+
+</div>
+
+<div class="mt-6">
+
+<label class="text-sm font-medium">
+
+Invite via Email
+
+</label>
+
+<input
+[(ngModel)]="email"
+class="w-full mt-2 border rounded-xl p-3"
+placeholder="friend@email.com">
+
+</div>
+
+<div class="flex justify-end gap-4 mt-8">
+
+<button
+class="secondary-btn"
+(click)="closeInviteModal()">
+
+Cancel
+
+</button>
+
+<button
+class="primary-btn"
+(click)="sendInvite()">
+
+Send Invite
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+}
+@if(showProductModal){
+
+<div
+class="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+<div
+class="bg-white rounded-[28px] w-[650px] max-w-[90vw] p-8">
+
+<h2 class="font-heading text-3xl">
+
+Add Product
+
+</h2>
+
+<div
+class="grid grid-cols-2 gap-6 mt-8">
+
+@for(item of catalog;track item.name){
+
+<div
+class="border rounded-2xl p-4">
+
+<img
+[src]="item.image"
+class="rounded-xl h-20 w-full object-cover">
+
+<h3
+class="mt-4 font-semibold">
+
+{{item.name}}
+
+</h3>
+
+<p
+class="text-primary">
+
+{{item.price}}
+
+</p>
+
+<button
+class="primary-btn w-full mt-4"
+(click)="addProduct(item)">
+
+Add to Moodboard
+
+</button>
+
+</div>
+
+}
+
+</div>
+
+<div
+class="flex justify-end mt-8">
+
+<button
+class="secondary-btn"
+(click)="closeProductModal()">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+}

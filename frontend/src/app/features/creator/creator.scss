@@ -1,0 +1,47 @@
+:host{
+    display:block;
+}
+
+button{
+    transition:.25s ease;
+}
+
+button:hover{
+    transform:translateY(-2px);
+}
+
+.bg-white{
+    transition:.3s ease;
+}
+
+.bg-white:hover{
+    transform:translateY(-4px);
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.rounded-full{
+
+    animation:float 4s ease-in-out infinite;
+
+}

@@ -1,0 +1,221 @@
+/* -------------------------------- */
+/* GOOGLE FONTS */
+/* -------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+
+/* -------------------------------- */
+/* TAILWIND */
+/* -------------------------------- */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* -------------------------------- */
+/* ROOT */
+/* -------------------------------- */
+
+:root{
+
+    --primary:#E79BA7;
+
+    --primary-light:#F8DDE2;
+
+    --background:#FFF9F8;
+
+    --cream:#FFF5F0;
+
+    --text:#2F2F2F;
+
+    --gray:#767676;
+
+    --border:#F0E7E2;
+
+}
+
+
+/* -------------------------------- */
+/* RESET */
+/* -------------------------------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    background:var(--background);
+
+    font-family:'Inter',sans-serif;
+
+    color:var(--text);
+
+    overflow-x:hidden;
+
+    line-height:1.6;
+
+}
+
+
+/* -------------------------------- */
+/* TYPOGRAPHY */
+/* -------------------------------- */
+
+h1,h2,h3,h4,h5,h6{
+
+    font-family:'Playfair Display',serif;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+p{
+
+    color:var(--gray);
+
+}
+
+
+button{
+
+    cursor:pointer;
+
+    border:none;
+
+    transition:.25s ease;
+
+}
+
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+
+/* -------------------------------- */
+/* SCROLLBAR */
+/* -------------------------------- */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:white;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+
+/* -------------------------------- */
+/* COMMON CLASSES */
+/* -------------------------------- */
+
+.container{
+
+    width:min(1280px,92%);
+
+    margin:auto;
+
+}
+
+.section{
+
+    padding:90px 0;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:24px;
+
+    box-shadow:0 10px 35px rgba(0,0,0,.06);
+
+}
+
+.primary-btn{
+
+    background:var(--primary);
+
+    color:white;
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 10px 25px rgba(231,155,167,.35);
+
+}
+
+.secondary-btn{
+
+    background:white;
+
+    color:var(--primary);
+
+    border:1px solid var(--primary);
+
+    padding:14px 28px;
+
+    border-radius:999px;
+
+}
+
+.tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    padding:8px 18px;
+
+    border-radius:999px;
+
+    background:var(--cream);
+
+    color:var(--primary);
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+}
